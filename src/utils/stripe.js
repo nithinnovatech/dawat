@@ -3,8 +3,8 @@ import { loadStripe } from '@stripe/stripe-js';
 // Get Stripe publishable key from environment variables
 const STRIPE_PUBLISHABLE_KEY = import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY;
 
-// Backend API URL
-const API_URL = 'http://localhost:3002/api';
+// Backend API URL - works for both local development and Vercel deployment
+const API_URL = import.meta.env.PROD ? '/api' : 'http://localhost:3002/api';
 
 // Initialize Stripe
 let stripePromise = null;
