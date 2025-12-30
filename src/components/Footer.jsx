@@ -153,7 +153,7 @@ const Footer = () => {
                             {[
                                 { name: 'Menu', href: '/#menu' },
                                 { name: 'About Us', href: '/#about' },
-                                { name: 'Contact', href: '/#contact' },
+                                { name: 'Contact', href: '/contact' },
                                 { name: 'Privacy Policy', href: '/privacy' },
                                 { name: 'Terms & Conditions', href: '/terms' },
                             ].map((link) => (

@@ -23,7 +23,7 @@ const Navbar = () => {
         { name: 'Home', href: '/' },
         { name: 'Menu', href: '/#menu' },
         { name: 'About', href: '/#about' },
-        { name: 'Contact', href: '/#contact' },
+        { name: 'Contact', href: '/contact' },
     ];
 
     return (
@@ -31,8 +31,8 @@ const Navbar = () => {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isScrolled
-                    ? 'bg-maroon-900/95 backdrop-blur-md shadow-xl'
-                    : 'bg-transparent'
+                ? 'bg-maroon-900/95 backdrop-blur-md shadow-xl'
+                : 'bg-transparent'
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
