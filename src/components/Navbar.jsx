@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ShoppingCart, Menu, X, Phone } from 'lucide-react';
-import { useCart } from '../context/CartContext';
+import { Menu, X, Phone } from 'lucide-react';
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-    const { getCartCount, toggleCart } = useCart();
     const location = useLocation();
-    const cartCount = getCartCount();
 
     useEffect(() => {
         const handleScroll = () => {
@@ -75,25 +72,6 @@ const Navbar = () => {
                             <Phone size={18} />
                             <span className="font-medium">Order Now</span>
                         </a>
-
-                        {/* Cart Button */}
-                        <motion.button
-                            whileHover={{ scale: 1.1 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={toggleCart}
-                            className="relative p-2 text-cream-100 hover:text-gold-400 transition-colors"
-                        >
-                            <ShoppingCart size={24} />
-                            {cartCount > 0 && (
-                                <motion.span
-                                    initial={{ scale: 0 }}
-                                    animate={{ scale: 1 }}
-                                    className="absolute -top-1 -right-1 bg-gold-500 text-maroon-900 text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center"
-                                >
-                                    {cartCount}
-                                </motion.span>
-                            )}
-                        </motion.button>
 
                         {/* Mobile Menu Button */}
                         <button
