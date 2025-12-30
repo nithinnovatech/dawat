@@ -15,11 +15,36 @@ emailjs.init(EMAILJS_PUBLIC_KEY);
  */
 export const sendOrderConfirmationEmail = async (orderData) => {
     const itemsList = orderData.items
-        .map((item) => `• ${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`)
+        .map((item) => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`)
         .join('\n');
 
-    // Using only the most basic EmailJS parameters
+    // Template params matching EmailJS HTML template variables
     const templateParams = {
+        // Customer info
+        to_email: orderData.email,
+        to_name: orderData.customerName,
+        customer_name: orderData.customerName,
+
+        // Order details
+        order_id: orderData.orderId,
+        order_date: new Date().toLocaleDateString('en-AU', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric'
+        }),
+
+        // Items and pricing
+        items_list: itemsList,
+        subtotal: `$${orderData.subtotal.toFixed(2)}`,
+        delivery_fee: orderData.deliveryFee === 0 ? 'FREE' : `$${orderData.deliveryFee.toFixed(2)}`,
+        total: `$${orderData.total.toFixed(2)}`,
+
+        // Delivery info
+        address: orderData.address,
+        phone: orderData.phone,
+        special_instructions: orderData.specialInstructions || 'None',
+
+        // Legacy fields for backward compatibility
         name: orderData.customerName,
         email: orderData.email,
         title: `Order Confirmed - ${orderData.orderId}`,

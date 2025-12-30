@@ -31,6 +31,76 @@ const OrderSuccess = () => {
         );
     }
 
+    // Generate and download receipt
+    const downloadReceipt = () => {
+        const itemsList = orderData.items
+            .map((item) => `${item.name} x${item.quantity} - $${(item.price * item.quantity).toFixed(2)}`)
+            .join('\n        ');
+
+        const receiptContent = `
+════════════════════════════════════════════
+           DAWAT BY TASKERWAY
+              ORDER RECEIPT
+════════════════════════════════════════════
+
+Order ID: ${orderData.orderId}
+Date: ${new Date().toLocaleDateString('en-AU', {
+            day: '2-digit',
+            month: 'long',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        })}
+
+────────────────────────────────────────────
+CUSTOMER DETAILS
+────────────────────────────────────────────
+Name: ${orderData.customerName}
+Email: ${orderData.email}
+Phone: ${orderData.phone}
+
+────────────────────────────────────────────
+DELIVERY ADDRESS
+────────────────────────────────────────────
+${orderData.address}
+
+────────────────────────────────────────────
+ORDER ITEMS
+────────────────────────────────────────────
+        ${itemsList}
+
+────────────────────────────────────────────
+PAYMENT SUMMARY
+────────────────────────────────────────────
+Subtotal:     $${orderData.subtotal.toFixed(2)}
+Delivery:     ${orderData.deliveryFee === 0 ? 'FREE' : '$' + orderData.deliveryFee.toFixed(2)}
+────────────────────────────────────────────
+TOTAL:        $${orderData.total.toFixed(2)} AUD
+────────────────────────────────────────────
+
+Payment Status: ✓ PAID
+${orderData.specialInstructions ? '\nSpecial Instructions: ' + orderData.specialInstructions : ''}
+
+════════════════════════════════════════════
+     Thank you for ordering with us!
+    
+  Questions? Call: +61 400 000 000
+  Email: support@dawat.com.au
+════════════════════════════════════════════
+        `;
+
+        // Create blob and download
+        const blob = new Blob([receiptContent], { type: 'text/plain' });
+        const url = URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `Dawat-Receipt-${orderData.orderId}.txt`;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+    };
+
     const steps = [
         { icon: CheckCircle, label: 'Order Confirmed', status: 'complete' },
         { icon: Package, label: 'Preparing', status: 'current' },
@@ -108,18 +178,18 @@ const OrderSuccess = () => {
                                     <div key={step.label} className="flex flex-col items-center flex-1">
                                         <div
                                             className={`w-10 h-10 rounded-full flex items-center justify-center mb-2 ${step.status === 'complete'
-                                                    ? 'bg-green-500 text-white'
-                                                    : step.status === 'current'
-                                                        ? 'bg-gold-500 text-maroon-900 animate-pulse'
-                                                        : 'bg-maroon-700 text-cream-200/40'
+                                                ? 'bg-green-500 text-white'
+                                                : step.status === 'current'
+                                                    ? 'bg-gold-500 text-maroon-900 animate-pulse'
+                                                    : 'bg-maroon-700 text-cream-200/40'
                                                 }`}
                                         >
                                             <step.icon size={20} />
                                         </div>
                                         <span
                                             className={`text-xs text-center ${step.status === 'complete' || step.status === 'current'
-                                                    ? 'text-cream-100'
-                                                    : 'text-cream-200/40'
+                                                ? 'text-cream-100'
+                                                : 'text-cream-200/40'
                                                 }`}
                                         >
                                             {step.label}
@@ -210,7 +280,10 @@ const OrderSuccess = () => {
                             <Home size={18} className="inline mr-2" />
                             Back to Home
                         </Link>
-                        <button className="btn-gold-outline flex items-center justify-center space-x-2">
+                        <button
+                            onClick={downloadReceipt}
+                            className="btn-gold-outline flex items-center justify-center space-x-2"
+                        >
                             <Download size={18} />
                             <span>Download Receipt</span>
                         </button>

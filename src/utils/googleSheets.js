@@ -36,7 +36,7 @@
  */
 
 // Replace with your Google Apps Script Web App URL
-const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbxKNqBWWQwrX2_UwlOkU5rndxlTV4eZtVrw8Z-uk7Elqcpdij2gqyuub2lmYtePG_YxIA/exec';
+const GOOGLE_SHEETS_WEB_APP_URL = 'https://script.google.com/macros/s/AKfycbzVHOx5z3Gl8wh6iGZ2A07YupRjZJMLMzqRH4FtsrvJRwMuh22eBp3MXljzyv_V706bOQ/exec';
 
 /**
  * Generate unique order ID
