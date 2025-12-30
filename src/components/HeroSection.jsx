@@ -173,7 +173,7 @@ const HeroSection = () => {
                     >
                         {[
                             '🍛 Authentic Hyderabadi',
-                            '🚚 Melbourne Delivery',
+                            '🚚 Australia-wide Delivery',
                             '⭐ Premium Quality',
                         ].map((feature, i) => (
                             <span

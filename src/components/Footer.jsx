@@ -6,23 +6,23 @@ import {
     Mail,
     Clock,
     Instagram,
-    Facebook
+    Facebook,
+    Globe,
+    Truck
 } from 'lucide-react';
 
 const Footer = () => {
     const currentYear = new Date().getFullYear();
 
-    const deliveryAreas = [
-        'Melbourne CBD',
-        'South Yarra',
-        'Richmond',
-        'Carlton',
-        'Fitzroy',
-        'Brunswick',
-        'St Kilda',
-        'Prahran',
-        'Hawthorn',
-        'Collingwood',
+    const australianStates = [
+        'New South Wales',
+        'Victoria',
+        'Queensland',
+        'Western Australia',
+        'South Australia',
+        'Tasmania',
+        'Northern Territory',
+        'ACT',
     ];
 
     return (
@@ -44,8 +44,8 @@ const Footer = () => {
                             </span>
                         </div>
                         <p className="text-cream-200/70 mb-6">
-                            Authentic Hyderabadi cuisine delivered with love to your doorstep
-                            in Melbourne. Celebrate special moments with our premium dishes.
+                            Authentic Hyderabadi cuisine from our cloud kitchen delivered with love
+                            across Australia. Celebrate special moments with our premium dishes.
                         </p>
                         <div className="flex space-x-4">
                             <a
@@ -79,18 +79,18 @@ const Footer = () => {
                         </h3>
                         <ul className="space-y-4">
                             <li className="flex items-start space-x-3">
-                                <MapPin size={20} className="text-gold-500 mt-1 flex-shrink-0" />
+                                <Globe size={20} className="text-gold-500 mt-1 flex-shrink-0" />
                                 <span className="text-cream-200/80">
-                                    Melbourne, Victoria<br />Australia
+                                    Cloud Kitchen<br />Australia
                                 </span>
                             </li>
                             <li className="flex items-center space-x-3">
                                 <Phone size={20} className="text-gold-500 flex-shrink-0" />
                                 <a
-                                    href="tel:+61400000000"
+                                    href="tel:+61405600849"
                                     className="text-cream-200/80 hover:text-gold-400 transition-colors"
                                 >
-                                    +61 400 000 000
+                                    +61 405 600 849
                                 </a>
                             </li>
                             <li className="flex items-center space-x-3">
@@ -114,7 +114,7 @@ const Footer = () => {
                         </ul>
                     </motion.div>
 
-                    {/* Delivery Areas */}
+                    {/* Delivery Areas - Australia Wide */}
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -122,20 +122,24 @@ const Footer = () => {
                         transition={{ delay: 0.2 }}
                     >
                         <h3 className="text-lg font-display font-bold text-gold-400 mb-6">
-                            Delivery Areas
+                            We Deliver Australia-Wide
                         </h3>
+                        <div className="flex items-center space-x-2 mb-4">
+                            <Truck size={20} className="text-gold-500" />
+                            <span className="text-cream-200/80">Nationwide Shipping</span>
+                        </div>
                         <ul className="grid grid-cols-2 gap-2">
-                            {deliveryAreas.map((area) => (
+                            {australianStates.map((state) => (
                                 <li
-                                    key={area}
+                                    key={state}
                                     className="text-cream-200/70 text-sm hover:text-gold-400 transition-colors cursor-default"
                                 >
-                                    • {area}
+                                    • {state}
                                 </li>
                             ))}
                         </ul>
                         <p className="text-gold-400/80 text-sm mt-4">
-                            + More Melbourne suburbs!
+                            🇦🇺 From our cloud kitchen to your doorstep!
                         </p>
                     </motion.div>
 
@@ -180,7 +184,7 @@ const Footer = () => {
                         </p>
                         <div className="flex items-center space-x-4">
                             <span className="text-cream-200/50 text-sm">
-                                Made with ❤️ in Melbourne
+                                Made with ❤️ in Australia
                             </span>
                             <img
                                 src="https://upload.wikimedia.org/wikipedia/en/b/b9/Flag_of_Australia.svg"

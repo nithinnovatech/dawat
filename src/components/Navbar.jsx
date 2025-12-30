@@ -69,7 +69,7 @@ const Navbar = () => {
                     <div className="flex items-center space-x-4">
                         {/* Phone */}
                         <a
-                            href="tel:+61400000000"
+                            href="tel:+61405600849"
                             className="hidden md:flex items-center space-x-2 text-gold-400 hover:text-gold-300 transition-colors"
                         >
                             <Phone size={18} />
@@ -127,11 +127,11 @@ const Navbar = () => {
                                 </a>
                             ))}
                             <a
-                                href="tel:+61400000000"
+                                href="tel:+61405600849"
                                 className="flex items-center space-x-2 text-gold-400 py-2"
                             >
                                 <Phone size={18} />
-                                <span className="font-medium">+61 400 000 000</span>
+                                <span className="font-medium">+61 405 600 849</span>
                             </a>
                         </div>
                     </motion.div>

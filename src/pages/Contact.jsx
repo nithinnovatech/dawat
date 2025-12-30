@@ -8,7 +8,8 @@ import {
     User,
     MessageSquare,
     Instagram,
-    Facebook
+    Facebook,
+    Globe
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -70,22 +71,22 @@ const Contact = () => {
             `Subject: ${formData.subject || 'General Inquiry'}\n\n` +
             `Message:\n${formData.message || 'I would like to inquire about your services.'}`
         );
-        const whatsappLink = `https://wa.me/61400000000?text=${message}`;
+        const whatsappLink = `https://wa.me/61405600849?text=${message}`;
         window.open(whatsappLink, '_blank');
     };
 
     const contactInfo = [
         {
-            icon: MapPin,
-            title: 'Address',
-            details: ['Melbourne, Victoria', 'Australia'],
-            color: 'text-red-400'
+            icon: Globe,
+            title: 'Location',
+            details: ['Cloud Kitchen', 'Serving All of Australia 🇦🇺'],
+            color: 'text-blue-400'
         },
         {
             icon: Phone,
             title: 'Phone',
-            details: ['+61 400 000 000'],
-            link: 'tel:+61400000000',
+            details: ['+61 405 600 849'],
+            link: 'tel:+61405600849',
             color: 'text-green-400'
         },
         {
@@ -194,7 +195,7 @@ const Contact = () => {
                                             value={formData.phone}
                                             onChange={handleInputChange}
                                             className="input-premium pl-12"
-                                            placeholder="+61 400 000 000"
+                                            placeholder="+61 405 600 849"
                                         />
                                     </div>
                                 </div>
@@ -326,7 +327,7 @@ const Contact = () => {
                                 </h3>
                                 <div className="flex space-x-4">
                                     <a
-                                        href="https://wa.me/61400000000?text=Hi%20Dawat%20by%20Taskerway!%20I%20would%20like%20to%20inquire%20about%20your%20services."
+                                        href="https://wa.me/61405600849?text=Hi%20Dawat%20by%20Taskerway!%20I%20would%20like%20to%20inquire%20about%20your%20services."
                                         target="_blank"
                                         rel="noopener noreferrer"
                                         className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center text-white hover:scale-110 transition-transform"

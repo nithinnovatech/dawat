@@ -84,7 +84,7 @@ ${orderData.specialInstructions ? '\nSpecial Instructions: ' + orderData.special
 ════════════════════════════════════════════
      Thank you for ordering with us!
     
-  Questions? Call: +61 400 000 000
+  Questions? Call: +61 405 600 849
   Email: support@dawat.com.au
 ════════════════════════════════════════════
         `;
@@ -297,8 +297,8 @@ ${orderData.specialInstructions ? '\nSpecial Instructions: ' + orderData.special
                         className="text-center text-cream-200/50 text-sm mt-8"
                     >
                         Questions about your order? Call us at{' '}
-                        <a href="tel:+61400000000" className="text-gold-400 hover:underline">
-                            +61 400 000 000
+                        <a href="tel:+61405600849" className="text-gold-400 hover:underline">
+                            +61 405 600 849
                         </a>
                     </motion.p>
                 </div>

@@ -3,65 +3,40 @@ import { motion } from 'framer-motion';
 import { Plus, Minus, Star } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 
-// Menu items data
-const menuItems = [
+// New Year Packs - Only Three Packs
+const newYearPacks = [
     {
-        id: 1,
-        name: 'Saffron Biryani',
-        description: 'Aromatic, premium spices, authentic Hyderabadi flavor',
-        price: 45,
+        id: 101,
+        name: '🍽️ Single Pack',
+        description: 'Perfect for 1 person - Biryani, Curry, Raita & Dessert',
+        price: 59,
         image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400&h=300&fit=crop',
-        category: 'main',
+        category: 'pack',
         rating: 4.9,
-        isPopular: true,
+        serves: '1 Person',
     },
     {
-        id: 2,
-        name: 'Chicken Curry',
-        description: 'Juicy, perfectly spiced, slow-cooked with care',
-        price: 35,
-        image: 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?w=400&h=300&fit=crop',
-        category: 'main',
-        rating: 4.8,
-    },
-    {
-        id: 3,
-        name: 'Raita & Salad',
-        description: 'Fresh, crisp, and flavorful accompaniment',
-        price: 15,
-        image: 'https://images.unsplash.com/photo-1546793665-c74683f339c1?w=400&h=300&fit=crop',
-        category: 'sides',
-        rating: 4.7,
-    },
-    {
-        id: 4,
-        name: 'Celebration Cake',
-        description: 'Sweet, festive, premium dessert for New Year',
-        price: 55,
-        image: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=300&fit=crop',
-        category: 'dessert',
-        rating: 4.9,
-        isNew: true,
-    },
-    {
-        id: 5,
-        name: 'Family Pack (Serves 4)',
-        description: 'Complete feast with Biryani, Curry, Sides & Cake',
+        id: 102,
+        name: '👨‍👩‍👧‍👦 Family Pack',
+        description: 'Serves 4 - Complete feast with Biryani, Curry, Sides & Cake',
         price: 169,
         image: 'https://images.unsplash.com/photo-1567188040759-fb8a883dc6d8?w=400&h=300&fit=crop',
-        category: 'special',
+        category: 'pack',
         rating: 5.0,
+        serves: '4 People',
         isPopular: true,
         isBestValue: true,
     },
     {
-        id: 6,
-        name: 'Mutton Biryani',
-        description: 'Tender mutton, aromatic rice, traditional spices',
-        price: 55,
-        image: 'https://images.unsplash.com/photo-1642821373181-696a54913e93?w=400&h=300&fit=crop',
-        category: 'main',
-        rating: 4.9,
+        id: 103,
+        name: '🎉 Jumbo Pack',
+        description: 'Serves 7-8 - Grand celebration feast for large gatherings',
+        price: 299,
+        image: 'https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop',
+        category: 'pack',
+        rating: 5.0,
+        serves: '7-8 People',
+        isPremium: true,
     },
 ];
 
@@ -85,14 +60,19 @@ const ProductCard = ({ item }) => {
                         🔥 Popular
                     </span>
                 )}
-                {item.isNew && (
-                    <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                        ✨ New
-                    </span>
-                )}
                 {item.isBestValue && (
                     <span className="bg-gradient-to-r from-gold-500 to-gold-400 text-maroon-900 text-xs font-bold px-3 py-1 rounded-full animate-pulse">
                         🎉 Best Value
+                    </span>
+                )}
+                {item.isPremium && (
+                    <span className="bg-gradient-to-r from-purple-600 to-pink-500 text-white text-xs font-bold px-3 py-1 rounded-full animate-pulse">
+                        👑 Premium
+                    </span>
+                )}
+                {item.serves && (
+                    <span className="bg-maroon-800/80 backdrop-blur-sm text-cream-100 text-xs font-medium px-3 py-1 rounded-full">
+                        👥 {item.serves}
                     </span>
                 )}
             </div>
@@ -176,13 +156,13 @@ const MenuSection = () => {
                     className="text-center mb-16"
                 >
                     <span className="text-gold-400 font-medium tracking-widest uppercase text-sm mb-4 block">
-                        Our Delicious Offerings
+                        New Year 2025 Special
                     </span>
-                    <h2 className="section-title">New Year Feast Menu</h2>
+                    <h2 className="section-title">Choose Your Pack</h2>
                     <div className="gold-divider mt-4 mb-6" />
                     <p className="text-cream-200/80 max-w-2xl mx-auto text-lg">
                         Celebrate the New Year with our authentic Hyderabadi cuisine,
-                        prepared with love and delivered fresh to your doorstep in Melbourne.
+                        prepared with love and delivered fresh to your doorstep across Australia.
                     </p>
                 </motion.div>
 
@@ -212,9 +192,9 @@ const MenuSection = () => {
                     </div>
                 </motion.div>
 
-                {/* Menu Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {menuItems.map((item) => (
+                {/* New Year Packs Grid */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    {newYearPacks.map((item) => (
                         <ProductCard key={item.id} item={item} />
                     ))}
                 </div>
